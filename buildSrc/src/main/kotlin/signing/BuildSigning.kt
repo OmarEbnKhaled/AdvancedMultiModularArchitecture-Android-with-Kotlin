@@ -42,7 +42,7 @@ sealed class BuildSigning(val name: String) {
     class Debug(private val project: Project) : BuildSigning(SigningTypes.DEBUG) {
         override fun create(namedDomainObjectContainer: NamedDomainObjectContainer<out ApkSigningConfig>) {
             namedDomainObjectContainer.getByName(name) {
-                storeFile = File(project.rootProject.rootDir, "debug.keystore")
+                storeFile = File(project.rootProject.rootDir, "keystores/debug.keystore")
                 storePassword = "android"
                 keyAlias = "androiddebugkey"
                 keyPassword = "android"

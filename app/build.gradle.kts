@@ -7,6 +7,7 @@ import dependencies.androidTestImplementationDependencies
 import dependencies.androidx
 import dependencies.debugImplementationDependencies
 import dependencies.hilt
+import dependencies.homeModule
 import dependencies.loginModule
 import dependencies.okHttp
 import dependencies.retrofit
@@ -73,18 +74,18 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -95,6 +96,7 @@ android {
 
 dependencies {
     loginModule()
+    homeModule()
 
     androidx()
     hilt()
