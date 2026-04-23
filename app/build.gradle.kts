@@ -3,10 +3,17 @@ import build.BuildCreator
 import build.BuildDimensions
 import flavors.BuildFlavor
 import release.ReleaseConfig
-import dependencies.Dependencies
+import dependencies.androidTestImplementationDependencies
+import dependencies.androidx
+import dependencies.debugImplementationDependencies
+import dependencies.hilt
+import dependencies.loginModule
+import dependencies.okHttp
+import dependencies.retrofit
+import dependencies.room
+import dependencies.testImplementationDependencies
 import signing.BuildSigning
 import signing.SigningTypes
-import test.TestDependencies
 import test.TestBuildConfig
 
 plugins {
@@ -87,21 +94,15 @@ android {
 }
 
 dependencies {
+    loginModule()
 
-    implementation(Dependencies.ANDROIDX_CORE)
-    implementation(Dependencies.ANDROIDX_LIFECYCLE_RUNTIME_KTX)
-    implementation(Dependencies.ANDROIDX_ACTIVITY_COMPOSE)
-    implementation(Dependencies.ANDROIDX_UI)
-    implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
-    implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    implementation(Dependencies.ANDROIDX_MATERIAL3)
+    androidx()
+    hilt()
+    room()
+    okHttp()
+    retrofit()
 
-    testImplementation(TestDependencies.ANDROIDX_JUNIT)
-
-    androidTestImplementation(TestDependencies.ANDROIDX_JUNIT)
-    androidTestImplementation(TestDependencies.ANDROIDX_ESPRESSO_CORE)
-    androidTestImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST)
-
-    debugImplementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
-    debugImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
+    testImplementationDependencies()
+    androidTestImplementationDependencies()
+    debugImplementationDependencies()
 }
