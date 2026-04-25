@@ -1,13 +1,17 @@
 package plugs
 
 import build.BuildConfig
+import build.BuildCreator
 import build.BuildDimensions
 import com.android.build.api.dsl.LibraryExtension
+import dependencies.DependenciesVersions
 import flavors.BuildFlavor
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
+import signing.BuildSigning
+import signing.SigningTypes
 import test.TestBuildConfig
 
 class SharedLibraryGradlePlugin : Plugin<Project> {
@@ -32,9 +36,29 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
                 testInstrumentationRunner = TestBuildConfig.TEST_INSTRUMENTATION_RUNNER
             }
 
+            signingConfigs {
+                BuildSigning.Release(project).create(this)
+                BuildSigning.ReleaseExternalQA(project).create(this)
+                BuildSigning.Debug(project).create(this)
+            }
+            buildTypes {
+                BuildCreator.Release(project).createLibrary(this).apply {
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android-optimize.txt"),
+                        "proguard-rules.pro"
+                    )
+                    signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
+                }
+                BuildCreator.Debug(project).createLibrary(this).apply {
+                    signingConfig = signingConfigs.getByName(SigningTypes.DEBUG)
+                }
+                BuildCreator.ReleaseExternalQA(project).createLibrary(this).apply {
+                    signingConfig = signingConfigs.getByName(SigningTypes.RELEASE_EXTERNAL_QA)
+                }
+            }
+
             flavorDimensions.add(BuildDimensions.APP)
             flavorDimensions.add(BuildDimensions.STORE)
-
             productFlavors {
                 BuildFlavor.Google.createLibrary(this)
                 BuildFlavor.Huawei.createLibrary(this)
@@ -42,6 +66,9 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
                 BuildFlavor.Client.createLibrary(this)
             }
 
+            composeOptions {
+                kotlinCompilerExtensionVersion = DependenciesVersions.KOTLIN_COMPILER
+            }
             buildFeatures {
                 compose = true
                 buildConfig = true
