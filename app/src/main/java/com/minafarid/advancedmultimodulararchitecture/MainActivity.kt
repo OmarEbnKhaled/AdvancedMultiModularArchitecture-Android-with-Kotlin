@@ -16,59 +16,59 @@ import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModu
 import com.minafarid.provider.DataProvider
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        // val room = Room.databaseBuilder()
+    // val room = Room.databaseBuilder()
 
-        enableEdgeToEdge()
-        setContent {
-            AdvancedMultiModularArchitectureTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = DataProvider.userName,
-                        modifier = Modifier.padding(innerPadding),
-                    )
-                }
-            }
+    enableEdgeToEdge()
+    setContent {
+      AdvancedMultiModularArchitectureTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+          Greeting(
+            name = DataProvider.userName,
+            modifier = Modifier.padding(innerPadding),
+          )
         }
-
-        val counter = 100
-
-        print(counter)
+      }
     }
+
+    val counter = 100
+
+    print(counter)
+  }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
-        Text(
-            text = "Hello $name, \nFrom (DataProvider.kt).",
-            modifier = modifier,
-        )
-        Text(
-            text = "Base Url: ${BuildConfig.BASE_URL}, \nFrom (BuildConfig.java).",
-            modifier = modifier,
-        )
-        Text(
-            text = "Can Clear Cash: ${BuildConfig.CAN_CLEAR_CASH}, \nFrom (BuildConfig.java).",
-            modifier = modifier,
-        )
-        Text(
-            text = "DB Version: ${BuildConfig.DB_VERSION}, \nFrom (BuildConfig.java).",
-            modifier = modifier,
-        )
-        Text(
-            text = "Map Key: ${BuildConfig.MAP_KEY}, \nFrom (BuildConfig.java).",
-            modifier = modifier,
-        )
-    }
+  Column(modifier = modifier) {
+    Text(
+      text = "Hello $name, \nFrom (DataProvider.kt).",
+      modifier = modifier,
+    )
+    Text(
+      text = "Base Url: ${BuildConfig.BASE_URL}, \nFrom (BuildConfig.java).",
+      modifier = modifier,
+    )
+    Text(
+      text = "Can Clear Cash: ${BuildConfig.CAN_CLEAR_CASH}, \nFrom (BuildConfig.java).",
+      modifier = modifier,
+    )
+    Text(
+      text = "DB Version: ${BuildConfig.DB_VERSION}, \nFrom (BuildConfig.java).",
+      modifier = modifier,
+    )
+    Text(
+      text = "Map Key: ${BuildConfig.MAP_KEY}, \nFrom (BuildConfig.java).",
+      modifier = modifier,
+    )
+  }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    AdvancedMultiModularArchitectureTheme {
-        Greeting("Android")
-    }
+  AdvancedMultiModularArchitectureTheme {
+    Greeting("Android")
+  }
 }
