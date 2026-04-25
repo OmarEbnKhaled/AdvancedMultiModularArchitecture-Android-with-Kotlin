@@ -1,8 +1,6 @@
 import build.BuildConfig
 import build.BuildCreator
 import build.BuildDimensions
-import flavors.BuildFlavor
-import release.ReleaseConfig
 import dependencies.androidTestImplementationDependencies
 import dependencies.androidx
 import dependencies.debugImplementationDependencies
@@ -13,6 +11,8 @@ import dependencies.okHttp
 import dependencies.retrofit
 import dependencies.room
 import dependencies.testImplementationDependencies
+import flavors.BuildFlavor
+import release.ReleaseConfig
 import signing.BuildSigning
 import signing.SigningTypes
 import test.TestBuildConfig
@@ -52,7 +52,7 @@ android {
         BuildCreator.Release(project).create(this).apply {
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
             signingConfig = signingConfigs.getByName(SigningTypes.RELEASE)
         }

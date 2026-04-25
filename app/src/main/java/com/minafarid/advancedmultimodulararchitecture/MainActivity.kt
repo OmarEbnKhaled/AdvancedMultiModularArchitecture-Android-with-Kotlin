@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.room.Room
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
 import com.minafarid.provider.DataProvider
 
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        val room = Room.databaseBuilder()
+        // val room = Room.databaseBuilder()
 
         enableEdgeToEdge()
         setContent {
@@ -28,11 +27,15 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = DataProvider.userName,
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
                     )
                 }
             }
         }
+
+        val counter = 100
+
+        print(counter)
     }
 }
 
@@ -41,23 +44,23 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         Text(
             text = "Hello $name, \nFrom (DataProvider.kt).",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "Base Url: ${BuildConfig.BASE_URL}, \nFrom (BuildConfig.java).",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "Can Clear Cash: ${BuildConfig.CAN_CLEAR_CASH}, \nFrom (BuildConfig.java).",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "DB Version: ${BuildConfig.DB_VERSION}, \nFrom (BuildConfig.java).",
-            modifier = modifier
+            modifier = modifier,
         )
         Text(
             text = "Map Key: ${BuildConfig.MAP_KEY}, \nFrom (BuildConfig.java).",
-            modifier = modifier
+            modifier = modifier,
         )
     }
 }
