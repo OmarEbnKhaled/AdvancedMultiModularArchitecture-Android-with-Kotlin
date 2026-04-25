@@ -9,4 +9,7 @@ class Test {
 
     print(counter)
   }
+
+  fun loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogi() {
+  }
 }

@@ -9,6 +9,29 @@
         }
       },
       "results": [
+        {
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/com/minafarid/login/Test.kt",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "endColumn": 76,
+                  "endLine": 13,
+                  "startColumn": 7,
+                  "startLine": 13
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "Function names should be at most 30 characters long."
+          },
+          "ruleId": "detekt.naming.FunctionMaxLength"
+        }
       ],
       "tool": {
         "driver": {
