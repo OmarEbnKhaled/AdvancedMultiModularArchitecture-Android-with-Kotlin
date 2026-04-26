@@ -12,4 +12,5 @@ object BuildPlugins {
     const val KTLINT = "ktlint-settings"
     const val SPOTLESS = "spotless-settings"
     const val DETEKT = "detekt-settings"
+    const val UPDATE_DEPENDENCIES_VERSIONS = "update-dependencies"
 }

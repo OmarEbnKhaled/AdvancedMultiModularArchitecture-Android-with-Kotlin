@@ -26,52 +26,14 @@
 
 * 5 cognitive complexity
 
-* 2 number of total code smells
+* 0 number of total code smells
 
 * 20% comment source ratio
 
 * 108 mcc per 1,000 lloc
 
-* 19 code smells per 1,000 lloc
+* 0 code smells per 1,000 lloc
 
-## Findings (2)
+## Findings (0)
 
-### naming, FunctionMaxLength (2)
-
-Function names should not be longer than the maximum set in the project configuration.
-
-[Documentation](https://detekt.dev/docs/rules/naming#functionmaxlength)
-
-* src/main/java/com/minafarid/advancedmultimodulararchitecture/MainActivity.kt:41:7
-```
-Function names should be at most 30 characters long.
-```
-```kotlin
-38     print(counter)
-39   }
-40 
-41   fun mainMainMainMainMainMainMainMainMainMainMainMainMainMainMainMain() {
-!!       ^ error
-42   }
-43 }
-44 
-
-```
-
-* src/main/java/com/minafarid/advancedmultimodulararchitecture/ui/theme/Theme.kt:37:5
-```
-Function names should be at most 30 characters long.
-```
-```kotlin
-34 
-35 @Composable
-36 @Suppress("FunctionNaming")
-37 fun AdvancedMultiModularArchitectureTheme(
-!!     ^ error
-38   darkTheme: Boolean = isSystemInDarkTheme(),
-39   // Dynamic color is available on Android 12+
-40   dynamicColor: Boolean = true,
-
-```
-
-generated with [detekt version 1.23.3](https://detekt.dev/) on 2026-04-25 14:01:19 UTC
+generated with [detekt version 1.23.3](https://detekt.dev/) on 2026-04-26 08:55:33 UTC
