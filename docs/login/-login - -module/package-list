@@ -1,0 +1,12 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.minafarid.login////PointingToDeclaration/-login - -module/com.minafarid.login/index.html
+$dokka.location:com.minafarid.login/ExampleUnitTest///PointingToDeclaration/-login - -module/com.minafarid.login/-example-unit-test/index.html
+$dokka.location:com.minafarid.login/ExampleUnitTest/ExampleUnitTest/#/PointingToDeclaration/-login - -module/com.minafarid.login/-example-unit-test/-example-unit-test.html
+$dokka.location:com.minafarid.login/ExampleUnitTest/addition_isCorrect/#/PointingToDeclaration/-login - -module/com.minafarid.login/-example-unit-test/addition_is-correct.html
+$dokka.location:com.minafarid.login/Test///PointingToDeclaration/-login - -module/com.minafarid.login/-test/index.html
+$dokka.location:com.minafarid.login/Test/Test/#/PointingToDeclaration/-login - -module/com.minafarid.login/-test/-test.html
+$dokka.location:com.minafarid.login/Test/loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogi/#/PointingToDeclaration/-login - -module/com.minafarid.login/-test/login-login-login-login-login-login-login-login-login-login-login-login-login-logi.html
+$dokka.location:com.minafarid.login/Test/test/#/PointingToDeclaration/-login - -module/com.minafarid.login/-test/test.html
+com.minafarid.login
+

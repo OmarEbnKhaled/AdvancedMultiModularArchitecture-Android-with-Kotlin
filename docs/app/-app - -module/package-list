@@ -1,0 +1,27 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme////PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/index.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//AdvancedMultiModularArchitectureTheme/#kotlin.Boolean#kotlin.Boolean#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-advanced-multi-modular-architecture-theme.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//Pink40/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-pink40.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//Pink80/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-pink80.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//Purple40/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-purple40.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//Purple80/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-purple80.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//PurpleGrey40/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-purple-grey40.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//PurpleGrey80/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-purple-grey80.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture.ui.theme//Typography/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture.ui.theme/-typography.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture////PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/index.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture//Greeting/#kotlin.String#androidx.compose.ui.Modifier/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-greeting.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture//GreetingPreview/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-greeting-preview.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/ExampleUnitTest///PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-example-unit-test/index.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/ExampleUnitTest/ExampleUnitTest/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-example-unit-test/-example-unit-test.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/ExampleUnitTest/addition_isCorrect/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-example-unit-test/addition_is-correct.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/MainActivity///PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-main-activity/index.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/MainActivity/MainActivity/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-main-activity/-main-activity.html
+$dokka.location:com.minafarid.advancedmultimodulararchitecture/MainActivity/mainMainMainMainMainMainMainMainMainMainMainMainMainMainMainMain/#/PointingToDeclaration/-app - -module/com.minafarid.advancedmultimodulararchitecture/-main-activity/main-main-main-main-main-main-main-main-main-main-main-main-main-main-main-main.html
+$dokka.location:com.minafarid.provider////PointingToDeclaration/-app - -module/com.minafarid.provider/index.html
+$dokka.location:com.minafarid.provider/DataProvider///PointingToDeclaration/-app - -module/com.minafarid.provider/[android-jvm]-data-provider/index.html
+$dokka.location:com.minafarid.provider/DataProvider/userName/#/PointingToDeclaration/-app - -module/com.minafarid.provider/[android-jvm]-data-provider/user-name.html
+com.minafarid.advancedmultimodulararchitecture
+com.minafarid.advancedmultimodulararchitecture.ui.theme
+com.minafarid.provider
+
