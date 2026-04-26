@@ -1,4 +1,4 @@
-package com.minafarid.home
+package com.mainfarid.data
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

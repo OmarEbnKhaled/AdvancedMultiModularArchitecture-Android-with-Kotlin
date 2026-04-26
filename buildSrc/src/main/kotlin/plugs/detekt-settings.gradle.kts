@@ -117,7 +117,13 @@ tasks.named("detekt") {
     finalizedBy(patchDetektHtmlTitle)   // <-- runs after detekt, even if detekt fails
 
     dependsOn("detektBaseline")
+
+    dependsOn(":core:data:detektBaseline")
+    dependsOn(":core:domain:detektBaseline")
+    dependsOn(":core:presentation:detektBaseline")
+
     dependsOn(":features:login:detektBaseline")
+    dependsOn(":features:home:detektBaseline")
 }
 
 tasks.named("preBuild") {

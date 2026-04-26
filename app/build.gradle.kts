@@ -3,10 +3,14 @@ import build.BuildCreator
 import build.BuildDimensions
 import dependencies.androidTestImplementationDependencies
 import dependencies.androidx
+import dependencies.dataModule
 import dependencies.debugImplementationDependencies
+import dependencies.domainModule
 import dependencies.hilt
+import dependencies.homeModule
 import dependencies.loginModule
 import dependencies.okHttp
+import dependencies.presentationModule
 import dependencies.retrofit
 import dependencies.room
 import dependencies.testImplementationDependencies
@@ -100,8 +104,12 @@ android {
 }
 
 dependencies {
+  dataModule()
+  domainModule()
+  presentationModule()
+
   loginModule()
-//  homeModule()
+  homeModule()
 
   androidx()
   hilt()

@@ -53,6 +53,20 @@ fun DependencyHandler.debugImplementationDependencies() {
     debugImplementation(TestDependencies.ANDROIDX_COMPOSE_UI_TEST_MANIFEST)
 }
 
+
+fun DependencyHandler.dataModule() {
+    moduleImplementation(project(":core:data"))
+}
+
+fun DependencyHandler.domainModule() {
+    moduleImplementation(project(":core:domain"))
+}
+
+fun DependencyHandler.presentationModule() {
+    moduleImplementation(project(":core:presentation"))
+}
+
+
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
 }
