@@ -1,6 +1,6 @@
-import dependencies.androidTestImplementationDependencies
-import dependencies.debugImplementationDependencies
-import dependencies.testImplementationDependencies
+import deps.androidTestImplementationDependencies
+import deps.debugImplementationDependencies
+import deps.testImplementationDependencies
 import plugs.SharedLibraryGradlePlugin
 
 plugins {

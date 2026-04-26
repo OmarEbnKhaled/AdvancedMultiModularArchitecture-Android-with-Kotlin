@@ -1,19 +1,19 @@
 import build.BuildConfig
 import build.BuildCreator
 import build.BuildDimensions
-import dependencies.androidTestImplementationDependencies
-import dependencies.androidx
-import dependencies.dataModule
-import dependencies.debugImplementationDependencies
-import dependencies.domainModule
-import dependencies.hilt
-import dependencies.homeModule
-import dependencies.loginModule
-import dependencies.okHttp
-import dependencies.presentationModule
-import dependencies.retrofit
-import dependencies.room
-import dependencies.testImplementationDependencies
+import deps.androidTestImplementationDependencies
+import deps.androidx
+import deps.dataModule
+import deps.debugImplementationDependencies
+import deps.domainModule
+import deps.hilt
+import deps.homeModule
+import deps.loginModule
+import deps.okHttp
+import deps.presentationModule
+import deps.retrofit
+import deps.room
+import deps.testImplementationDependencies
 import flavors.BuildFlavor
 import release.ReleaseConfig
 import signing.BuildSigning
@@ -25,6 +25,7 @@ plugins {
   id(plugs.BuildPlugins.KOTLIN_ANDROID)
   id(plugs.BuildPlugins.ANDROID)
   id(plugs.BuildPlugins.KAPT)
+  id(plugs.BuildPlugins.HILT) version deps.DependenciesVersions.HILT
 
   id(plugs.BuildPlugins.KTLINT)
   id(plugs.BuildPlugins.SPOTLESS)

@@ -1,4 +1,4 @@
-package dependencies
+package deps
 
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
@@ -25,7 +25,11 @@ fun DependencyHandler.okHttp() {
 
 fun DependencyHandler.hilt() {
     implementation(Dependencies.hiltAndroid)
+    implementation(Dependencies.hiltCompose)
+    implementation(Dependencies.hiltNavigation)
     kapt(Dependencies.hiltCompiler)
+    kapt(Dependencies.hiltAgp)
+    kapt(Dependencies.hiltCompilerKapt)
 }
 
 fun DependencyHandler.androidx() {
