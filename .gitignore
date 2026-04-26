@@ -36,4 +36,5 @@ src/androidTest/shaders/
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/codeStyles/Project.xml
 
-keystores
+/keystores
+/detekt
