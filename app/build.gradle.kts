@@ -5,7 +5,6 @@ import dependencies.androidTestImplementationDependencies
 import dependencies.androidx
 import dependencies.debugImplementationDependencies
 import dependencies.hilt
-import dependencies.homeModule
 import dependencies.loginModule
 import dependencies.okHttp
 import dependencies.retrofit
@@ -102,7 +101,7 @@ android {
 
 dependencies {
   loginModule()
-  homeModule()
+//  homeModule()
 
   androidx()
   hilt()
