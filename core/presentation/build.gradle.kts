@@ -1,8 +1,5 @@
 import dependencies.androidTestImplementationDependencies
-import dependencies.androidx
 import dependencies.debugImplementationDependencies
-import dependencies.hilt
-import dependencies.room
 import dependencies.testImplementationDependencies
 import plugs.SharedLibraryGradlePlugin
 
@@ -13,14 +10,10 @@ plugins {
 apply<SharedLibraryGradlePlugin>()
 
 android {
-  namespace = "com.minafarid.home"
+  namespace = "com.minafarid.presentation"
 }
 
 dependencies {
-  androidx()
-  hilt()
-  room()
-
   testImplementationDependencies()
   androidTestImplementationDependencies()
   debugImplementationDependencies()
