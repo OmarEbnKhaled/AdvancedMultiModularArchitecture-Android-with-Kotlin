@@ -9,52 +9,6 @@
         }
       },
       "results": [
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/main/java/com/minafarid/advancedmultimodulararchitecture/ui/theme/Theme.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 42,
-                  "endLine": 37,
-                  "startColumn": 5,
-                  "startLine": 37
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "Function names should be at most 30 characters long."
-          },
-          "ruleId": "detekt.naming.FunctionMaxLength"
-        },
-        {
-          "level": "warning",
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "src/main/java/com/minafarid/advancedmultimodulararchitecture/MainActivity.kt",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "endColumn": 71,
-                  "endLine": 41,
-                  "startColumn": 7,
-                  "startLine": 41
-                }
-              }
-            }
-          ],
-          "message": {
-            "text": "Function names should be at most 30 characters long."
-          },
-          "ruleId": "detekt.naming.FunctionMaxLength"
-        }
       ],
       "tool": {
         "driver": {

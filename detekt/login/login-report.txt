@@ -1,1 +1,0 @@
-FunctionMaxLength - [loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogi] at /Users/omarkhaled/Documents/My Android Projects/AdvancedMultiModularArchitecture/features/login/src/main/java/com/minafarid/login/Test.kt:13:7 - Signature=Test.kt$Test$fun loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogi()

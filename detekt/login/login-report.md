@@ -26,36 +26,14 @@
 
 * 0 cognitive complexity
 
-* 1 number of total code smells
+* 0 number of total code smells
 
 * 33% comment source ratio
 
 * 333 mcc per 1,000 lloc
 
-* 111 code smells per 1,000 lloc
+* 0 code smells per 1,000 lloc
 
-## Findings (1)
+## Findings (0)
 
-### naming, FunctionMaxLength (1)
-
-Function names should not be longer than the maximum set in the project configuration.
-
-[Documentation](https://detekt.dev/docs/rules/naming#functionmaxlength)
-
-* src/main/java/com/minafarid/login/Test.kt:13:7
-```
-Function names should be at most 30 characters long.
-```
-```kotlin
-10     print(counter)
-11   }
-12 
-13   fun loginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLoginLogi() {
-!!       ^ error
-14   }
-15 }
-16 
-
-```
-
-generated with [detekt version 1.23.3](https://detekt.dev/) on 2026-04-25 14:01:17 UTC
+generated with [detekt version 1.23.3](https://detekt.dev/) on 2026-04-26 08:55:33 UTC
