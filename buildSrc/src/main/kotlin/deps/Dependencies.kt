@@ -21,6 +21,7 @@ object Dependencies {
     const val hiltCompilerKapt = "androidx.hilt:hilt-compiler:${DependenciesVersions.HILT_COMPOSE}"
     const val hiltNavigation =
         "androidx.hilt:hilt-navigation-compose:${DependenciesVersions.HILT_COMPOSE}"
+    const val hiltWork = "androidx.work:work-runtime-ktx:${DependenciesVersions.HILT_WORK}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${DependenciesVersions.RETROFIT}"
     const val retrofitConverterGson =

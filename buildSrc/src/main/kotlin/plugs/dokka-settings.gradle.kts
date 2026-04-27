@@ -44,7 +44,7 @@ tasks {
                     sourceLink {
                         localDirectory.set(mainSrcDir)
                         remoteUrl.set(
-                            java.net.URL("https://github.com/OmarEbnKhaled/AdvancedMultiModularArchitecture-Android-with-Kotlin")
+                            java.net.URI("https://github.com/OmarEbnKhaled/AdvancedMultiModularArchitecture-Android-with-Kotlin").toURL()
                         )
                         remoteLineSuffix.set("#L")
                     }

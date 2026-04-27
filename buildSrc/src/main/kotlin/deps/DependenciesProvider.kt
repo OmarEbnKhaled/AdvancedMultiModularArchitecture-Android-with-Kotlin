@@ -30,6 +30,7 @@ fun DependencyHandler.hilt() {
     kapt(Dependencies.hiltCompiler)
     kapt(Dependencies.hiltAgp)
     kapt(Dependencies.hiltCompilerKapt)
+    implementation(Dependencies.hiltWork)
 }
 
 fun DependencyHandler.androidx() {
