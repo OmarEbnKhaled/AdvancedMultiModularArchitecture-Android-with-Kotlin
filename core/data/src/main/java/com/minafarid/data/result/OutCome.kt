@@ -5,7 +5,7 @@ import com.minafarid.data.model.ErrorMessage
 sealed class OutCome<T> {
     abstract fun isSuccess(): Boolean
 
-    open fun errorMessages(): ErrorMessage? = null
+    open fun errorMessage(): ErrorMessage? = null
 
     abstract suspend fun accept(useCase: UseCase<T>)
 
@@ -17,10 +17,10 @@ sealed class OutCome<T> {
         }
     }
 
-    class Error<T>(private val errorMessage: ErrorMessage): OutCome<T>() {
+    class Error<T>(private val errorMessage: ErrorMessage) : OutCome<T>() {
         override fun isSuccess(): Boolean = false
 
-        override fun errorMessages(): ErrorMessage = errorMessage
+        override fun errorMessage(): ErrorMessage = errorMessage
 
         override suspend fun accept(useCase: UseCase<T>) {
             useCase.onError(errorMessage)
