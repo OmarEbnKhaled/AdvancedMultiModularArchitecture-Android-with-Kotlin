@@ -1,6 +1,5 @@
-package com.mainfarid.data
+package com.minafarid.data
 
-import com.minafarid.data.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

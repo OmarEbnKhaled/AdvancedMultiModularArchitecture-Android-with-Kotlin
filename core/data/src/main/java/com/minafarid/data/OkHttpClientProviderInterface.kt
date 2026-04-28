@@ -1,4 +1,4 @@
-package com.mainfarid.data
+package com.minafarid.data
 
 import okhttp3.OkHttpClient
 
