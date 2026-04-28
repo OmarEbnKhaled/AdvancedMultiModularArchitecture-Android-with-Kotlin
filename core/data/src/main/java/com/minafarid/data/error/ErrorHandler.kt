@@ -14,9 +14,9 @@ fun ErrorResponse.toDomain(code: Int): ErrorMessage {
 }
 
 // Create default error response
-fun defaultErrorResponse() = ErrorResponse(
+fun getDefaultErrorResponse() = ErrorResponse(
     errorCode = "",
-    errorMessage = "",
+    errorMessage = "No internet connection",
     errorFieldList = emptyList()
 )
 
@@ -25,5 +25,5 @@ fun getErrorResponse(gson: Gson, errorBodyString: String): ErrorResponse =
     try {
         gson.fromJson(errorBodyString, ErrorResponse::class.java)
     } catch (e: Exception) {
-        defaultErrorResponse()
+        getDefaultErrorResponse()
     }
