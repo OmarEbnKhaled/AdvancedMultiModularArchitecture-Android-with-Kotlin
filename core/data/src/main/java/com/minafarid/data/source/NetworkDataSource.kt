@@ -2,20 +2,25 @@ package com.minafarid.data.source
 
 import com.google.gson.Gson
 import com.minafarid.data.connectivity.NetworkMonitorInterface
+import com.minafarid.data.constants.HEADER_LOCATION
 import com.minafarid.data.error.getDefaultErrorResponse
+import com.minafarid.data.error.getErrorResponse
 import com.minafarid.data.error.toDomain
 import com.minafarid.data.response.ErrorResponse
 import com.minafarid.data.result.OutCome
 import com.minafarid.data.source.DataSource.Companion.NO_INTERNET
+import com.minafarid.data.source.DataSource.Companion.SEE_OTHERS
 import com.minafarid.data.source.DataSource.Companion.SSL_PINNING
 import com.minafarid.data.source.DataSource.Companion.TIMEOUT
 import com.minafarid.data.source.DataSource.Companion.UNKNOWN
+import kotlinx.coroutines.isActive
 import okhttp3.Headers
 import retrofit2.Response
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import javax.net.ssl.SSLHandshakeException
 import javax.net.ssl.SSLPeerUnverifiedException
+import kotlin.coroutines.coroutineContext
 
 class NetworkDataSource<SERVICE>(
     private val service: SERVICE,
@@ -33,9 +38,34 @@ class NetworkDataSource<SERVICE>(
             OutCome.error(errorResponse.toDomain(code))
         },
     ): OutCome<T> {
-        return (if (networkMonitor.hasConnection()) {
+        return if (networkMonitor.hasConnection()) {
             try {
+                val response = service.request(userIdProvider())
+                val responseCode = response.code()
+                val errorBody = response.errorBody()?.string()
 
+                if (response.isSuccessful || responseCode == SEE_OTHERS) {
+                    val body = response.body()
+                    if (body != null && body != Unit) {
+                        if (coroutineContext.isActive) {
+                            onSuccess(body, response.headers())
+                        } else {
+                            onEmpty()
+                        }
+                    } else {
+                        // It's success but body equals to null or it's empty "Unit"
+                        val location = response.headers()[HEADER_LOCATION]
+                        if (location != null) {
+                            onRedirect(location, responseCode)
+                        } else {
+                            onEmpty()
+                        }
+                    }
+                } else if (errorBody.isNullOrBlank()) {
+                    onError(getDefaultErrorResponse(), responseCode)
+                }else {
+                    onError(getErrorResponse(gson, errorBody), responseCode)
+                }
             } catch (e: Exception) {
                 e.printStackTrace()
                 val code = when (e) {
@@ -60,6 +90,6 @@ class NetworkDataSource<SERVICE>(
         } else {
             // NO INTERNET ERROR
             onError(getDefaultErrorResponse(), NO_INTERNET)
-        }) as OutCome<T>
+        }
     }
 }
