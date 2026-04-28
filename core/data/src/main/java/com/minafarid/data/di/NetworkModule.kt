@@ -5,6 +5,7 @@ import com.minafarid.data.BuildConfig
 import com.minafarid.data.OkHttpClientProvider
 import com.minafarid.data.constants.HEADER_INTERCEPTOR_TAG
 import com.minafarid.data.constants.LOGGING_INTERCEPTOR_TAG
+import com.minafarid.data.factory.ServiceFactory
 import com.minafarid.data.okhttp.OkHttpClientProviderInterface
 import dagger.Module
 import dagger.Provides
@@ -55,5 +56,11 @@ class NetworkModule {
             .client(okHttpClient)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
         return builder.build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideServiceFactory(retrofit: Retrofit): ServiceFactory {
+        return ServiceFactory(retrofit)
     }
 }
