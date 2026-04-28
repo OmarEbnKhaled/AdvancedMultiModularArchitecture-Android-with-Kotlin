@@ -5,8 +5,11 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Call
 import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -37,4 +40,16 @@ class NetworkModule {
   }
 
   // Ok http factory
+  @Provides
+  @Singleton
+  fun provideOkHttpCallFactory(interceptor: Interceptor): Call.Factory {
+    return OkHttpClient.Builder().addInterceptor(interceptor)
+      .retryOnConnectionFailure(true)
+      .followRedirects(false)
+      .followSslRedirects(false)
+      .connectTimeout(60, TimeUnit.SECONDS)
+      .readTimeout(60, TimeUnit.SECONDS)
+      .writeTimeout(60, TimeUnit.SECONDS)
+      .build()
+  }
 }
