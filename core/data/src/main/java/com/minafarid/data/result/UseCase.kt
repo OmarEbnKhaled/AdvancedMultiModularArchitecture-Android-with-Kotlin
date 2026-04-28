@@ -6,7 +6,7 @@ interface UseCase<R> {
 
     suspend fun onSuccess(success: OutCome.Success<R>)
 
-    suspend fun omEmpty()
+    suspend fun onEmpty()
 
     suspend fun onError(errorMessage: ErrorMessage)
 }
