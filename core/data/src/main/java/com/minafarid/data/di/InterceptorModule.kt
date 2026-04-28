@@ -22,7 +22,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class InterceptorModule {
-
     @Provides
     @Singleton
     @Named(HEADER_INTERCEPTOR_TAG)
