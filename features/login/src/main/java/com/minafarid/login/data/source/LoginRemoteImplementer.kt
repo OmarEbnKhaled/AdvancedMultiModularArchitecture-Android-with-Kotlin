@@ -1,0 +1,12 @@
+package com.minafarid.login.data.source
+
+import com.minafarid.data.result.OutCome
+import com.minafarid.login.data.requests.LoginRequestBody
+import com.minafarid.login.domain.UserModel
+
+class LoginRemoteImplementer : LoginRemote {
+    override suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel> {
+        TODO("Not yet implemented")
+    }
+
+}
