@@ -15,18 +15,18 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class CoroutineModule {
-    @Provides
-    @Singleton
-    @Named(DISPATCHER_MAIN_TAG)
-    fun provideMainCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.Main
+  @Provides
+  @Singleton
+  @Named(DISPATCHER_MAIN_TAG)
+  fun provideMainCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.Main
 
-    @Provides
-    @Singleton
-    @Named(DISPATCHER_DEFAULT_TAG)
-    fun provideDefaultCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.Default
+  @Provides
+  @Singleton
+  @Named(DISPATCHER_DEFAULT_TAG)
+  fun provideDefaultCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.Default
 
-    @Provides
-    @Singleton
-    @Named(DISPATCHER_IO_TAG)
-    fun provideIoCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
+  @Provides
+  @Singleton
+  @Named(DISPATCHER_IO_TAG)
+  fun provideIoCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }

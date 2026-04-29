@@ -22,36 +22,36 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class InterceptorModule {
-    @Provides
-    @Singleton
-    @Named(HEADER_INTERCEPTOR_TAG)
-    fun provideHeaderInterceptor(
-        @Named(CLIENT_ID_TAG) clientId: String,
-        @Named(ACCESS_TOKEN_TAG) accessTokenProvider: () -> String?,
-        @Named(LANGUAGE_TAG) languageProvider: () -> Locale,
-    ): Interceptor {
-        return HeaderInterceptor(
-            clientId = clientId,
-            accessTokenProvider = accessTokenProvider,
-            languageProvider = languageProvider,
-        )
-    }
+  @Provides
+  @Singleton
+  @Named(HEADER_INTERCEPTOR_TAG)
+  fun provideHeaderInterceptor(
+    @Named(CLIENT_ID_TAG) clientId: String,
+    @Named(ACCESS_TOKEN_TAG) accessTokenProvider: () -> String?,
+    @Named(LANGUAGE_TAG) languageProvider: () -> Locale,
+  ): Interceptor {
+    return HeaderInterceptor(
+      clientId = clientId,
+      accessTokenProvider = accessTokenProvider,
+      languageProvider = languageProvider,
+    )
+  }
 
-    // Http Logging Interceptor
-    @Provides
-    @Singleton
-    @Named(LOGGING_INTERCEPTOR_TAG)
-    fun provideOkHttpLoggingInterceptor(): Interceptor {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = if (BuildConfig.DEBUG) {
-            HttpLoggingInterceptor.Level.BODY
-        } else {
-            HttpLoggingInterceptor.Level.NONE
-        }
-        if (!BuildConfig.DEBUG) {
-            interceptor.redactHeader(CLIENT_ID_HEADER) // redact any header that contains sensitive data.
-            interceptor.redactHeader(AUTHORIZATION_HEADER) // redact any header that contains sensitive data.
-        }
-        return interceptor
+  // Http Logging Interceptor
+  @Provides
+  @Singleton
+  @Named(LOGGING_INTERCEPTOR_TAG)
+  fun provideOkHttpLoggingInterceptor(): Interceptor {
+    val interceptor = HttpLoggingInterceptor()
+    interceptor.level = if (BuildConfig.DEBUG) {
+      HttpLoggingInterceptor.Level.BODY
+    } else {
+      HttpLoggingInterceptor.Level.NONE
     }
+    if (!BuildConfig.DEBUG) {
+      interceptor.redactHeader(CLIENT_ID_HEADER) // redact any header that contains sensitive data.
+      interceptor.redactHeader(AUTHORIZATION_HEADER) // redact any header that contains sensitive data.
+    }
+    return interceptor
+  }
 }

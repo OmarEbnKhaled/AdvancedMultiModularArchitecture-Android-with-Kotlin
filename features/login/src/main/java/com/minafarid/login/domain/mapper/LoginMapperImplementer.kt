@@ -6,15 +6,14 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
 class LoginMapperImplementer(private val defaultDispatcher: CoroutineDispatcher) : LoginMapper {
-    override suspend fun toDomain(loginResponse: LoginResponse): UserModel {
-        return withContext(defaultDispatcher) {
-            UserModel(
-                id = loginResponse.id.orEmpty(),
-                fullName = loginResponse.fullName.orEmpty(),
-                email = loginResponse.email.orEmpty(),
-                photo = loginResponse.photo.orEmpty()
-            )
-        }
-
+  override suspend fun toDomain(loginResponse: LoginResponse): UserModel {
+    return withContext(defaultDispatcher) {
+      UserModel(
+        id = loginResponse.id.orEmpty(),
+        fullName = loginResponse.fullName.orEmpty(),
+        email = loginResponse.email.orEmpty(),
+        photo = loginResponse.photo.orEmpty(),
+      )
     }
+  }
 }

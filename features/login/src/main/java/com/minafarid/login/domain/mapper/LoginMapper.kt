@@ -4,5 +4,5 @@ import com.minafarid.login.data.responses.LoginResponse
 import com.minafarid.login.domain.models.UserModel
 
 interface LoginMapper {
-    suspend fun toDomain(loginResponse: LoginResponse): UserModel
+  suspend fun toDomain(loginResponse: LoginResponse): UserModel
 }

@@ -23,73 +23,73 @@ import javax.net.ssl.SSLPeerUnverifiedException
 import kotlin.coroutines.coroutineContext
 
 class NetworkDataSource<SERVICE>(
-    private val service: SERVICE,
-    private val gson: Gson,
-    private val networkMonitor: NetworkMonitorInterface,
-    private val userIdProvider: () -> String,
+  private val service: SERVICE,
+  private val gson: Gson,
+  private val networkMonitor: NetworkMonitorInterface,
+  private val userIdProvider: () -> String,
 ) {
 
-    suspend fun <R, T> performRequest(
-        request: suspend SERVICE.(String) -> Response<R>,
-        onSuccess: suspend (R, Headers) -> OutCome<T> = { _, _ -> OutCome.empty() },
-        onRedirect: suspend (String, Int) -> OutCome<T> = { _, _ -> OutCome.empty() },
-        onEmpty: suspend () -> OutCome<T> = { OutCome.empty() },
-        onError: suspend (ErrorResponse, Int) -> OutCome<T> = { errorResponse, code ->
-            OutCome.error(errorResponse.toDomain(code))
-        },
-    ): OutCome<T> {
-        return if (networkMonitor.hasConnection()) {
-            try {
-                val response = service.request(userIdProvider())
-                val responseCode = response.code()
-                val errorBody = response.errorBody()?.string()
+  suspend fun <R, T> performRequest(
+    request: suspend SERVICE.(String) -> Response<R>,
+    onSuccess: suspend (R, Headers) -> OutCome<T> = { _, _ -> OutCome.empty() },
+    onRedirect: suspend (String, Int) -> OutCome<T> = { _, _ -> OutCome.empty() },
+    onEmpty: suspend () -> OutCome<T> = { OutCome.empty() },
+    onError: suspend (ErrorResponse, Int) -> OutCome<T> = { errorResponse, code ->
+      OutCome.error(errorResponse.toDomain(code))
+    },
+  ): OutCome<T> {
+    return if (networkMonitor.hasConnection()) {
+      try {
+        val response = service.request(userIdProvider())
+        val responseCode = response.code()
+        val errorBody = response.errorBody()?.string()
 
-                if (response.isSuccessful || responseCode == SEE_OTHERS) {
-                    val body = response.body()
-                    if (body != null && body != Unit) {
-                        if (coroutineContext.isActive) {
-                            onSuccess(body, response.headers())
-                        } else {
-                            onEmpty()
-                        }
-                    } else {
-                        // It's success but body equals to null or it's empty "Unit"
-                        val location = response.headers()[HEADER_LOCATION]
-                        if (location != null) {
-                            onRedirect(location, responseCode)
-                        } else {
-                            onEmpty()
-                        }
-                    }
-                } else if (errorBody.isNullOrBlank()) {
-                    onError(getDefaultErrorResponse(), responseCode)
-                }else {
-                    onError(getErrorResponse(gson, errorBody), responseCode)
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                val code = when (e) {
-                    is SocketTimeoutException -> {
-                        TIMEOUT
-                    }
-
-                    is UnknownHostException -> {
-                        NO_INTERNET
-                    }
-
-                    is SSLPeerUnverifiedException, is SSLHandshakeException -> {
-                        SSL_PINNING
-                    }
-
-                    else -> {
-                        UNKNOWN
-                    }
-                }
-                onError(getDefaultErrorResponse(), code)
+        if (response.isSuccessful || responseCode == SEE_OTHERS) {
+          val body = response.body()
+          if (body != null && body != Unit) {
+            if (coroutineContext.isActive) {
+              onSuccess(body, response.headers())
+            } else {
+              onEmpty()
             }
+          } else {
+            // It's success but body equals to null or it's empty "Unit"
+            val location = response.headers()[HEADER_LOCATION]
+            if (location != null) {
+              onRedirect(location, responseCode)
+            } else {
+              onEmpty()
+            }
+          }
+        } else if (errorBody.isNullOrBlank()) {
+          onError(getDefaultErrorResponse(), responseCode)
         } else {
-            // NO INTERNET ERROR
-            onError(getDefaultErrorResponse(), NO_INTERNET)
+          onError(getErrorResponse(gson, errorBody), responseCode)
         }
+      } catch (e: Exception) {
+        e.printStackTrace()
+        val code = when (e) {
+          is SocketTimeoutException -> {
+            TIMEOUT
+          }
+
+          is UnknownHostException -> {
+            NO_INTERNET
+          }
+
+          is SSLPeerUnverifiedException, is SSLHandshakeException -> {
+            SSL_PINNING
+          }
+
+          else -> {
+            UNKNOWN
+          }
+        }
+        onError(getDefaultErrorResponse(), code)
+      }
+    } else {
+      // NO INTERNET ERROR
+      onError(getDefaultErrorResponse(), NO_INTERNET)
     }
+  }
 }

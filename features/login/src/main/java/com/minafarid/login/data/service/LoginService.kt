@@ -13,13 +13,13 @@ const val EMAIL = "email"
 
 interface LoginService {
 
-    @POST("$BASE_URL/auth/login")
-    fun login(
-        @Body body: LoginRequestBody
-    ): Deferred<Response<LoginResponse>>
+  @POST("$BASE_URL/auth/login")
+  fun login(
+    @Body body: LoginRequestBody,
+  ): Deferred<Response<LoginResponse>>
 
-    @POST("$BASE_URL/auth/forgetPassword")
-    fun forgetPassword(
-        @Query(EMAIL) email: String
-    ): Deferred<Response<Unit>>
+  @POST("$BASE_URL/auth/forgetPassword")
+  fun forgetPassword(
+    @Query(EMAIL) email: String,
+  ): Deferred<Response<Unit>>
 }
