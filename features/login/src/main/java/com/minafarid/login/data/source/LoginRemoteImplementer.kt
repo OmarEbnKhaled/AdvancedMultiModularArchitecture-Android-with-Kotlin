@@ -1,14 +1,20 @@
 package com.minafarid.login.data.source
 
+import com.minafarid.data.error.toDomain
 import com.minafarid.data.result.OutCome
 import com.minafarid.data.source.NetworkDataSource
 import com.minafarid.login.data.requests.LoginRequestBody
 import com.minafarid.login.data.service.LoginService
 import com.minafarid.login.domain.UserModel
 
-class LoginRemoteImplementer(private val networkDataSource: NetworkDataSource<LoginService>) : LoginRemote {
+class LoginRemoteImplementer(
+    private val networkDataSource: NetworkDataSource<LoginService>
+) : LoginRemote {
     override suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel> {
-        TODO("Not yet implemented")
+        return networkDataSource.performRequest(
+            request = { login(loginRequestBody).await() },
+            onSuccess = { loginResponse, headers -> OutCome.success() },
+            onError = { errorResponse, code -> OutCome.error(errorResponse.toDomain(code)) }
+        )
     }
-
 }
