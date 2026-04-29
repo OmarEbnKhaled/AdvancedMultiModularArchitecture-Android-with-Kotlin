@@ -23,37 +23,37 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-    @Provides
-    @Singleton
-    fun provideLoginServiceFactory(serviceFactory: ServiceFactory): LoginService {
-        return serviceFactory.create(LoginService::class.java)
-    }
+  @Provides
+  @Singleton
+  fun provideLoginServiceFactory(serviceFactory: ServiceFactory): LoginService {
+    return serviceFactory.create(LoginService::class.java)
+  }
 
-    @Provides
-    @Singleton
-    fun provideNetworkDataSource(
-        loginService: LoginService,
-        gson: Gson,
-        networkMonitor: NetworkMonitorInterface,
-        @Named(USER_ID_TAG) userIdProvider: () -> String,
-    ): NetworkDataSource<LoginService> {
-        return NetworkDataSource(loginService, gson, networkMonitor, userIdProvider)
-    }
+  @Provides
+  @Singleton
+  fun provideNetworkDataSource(
+    loginService: LoginService,
+    gson: Gson,
+    networkMonitor: NetworkMonitorInterface,
+    @Named(USER_ID_TAG) userIdProvider: () -> String,
+  ): NetworkDataSource<LoginService> {
+    return NetworkDataSource(loginService, gson, networkMonitor, userIdProvider)
+  }
 
-    @Provides
-    @Singleton
-    fun provideLoginMapper(
-        @Named(DISPATCHER_DEFAULT_TAG) coroutineDispatcher: CoroutineDispatcher,
-    ): LoginMapper {
-        return LoginMapperImplementer(coroutineDispatcher)
-    }
+  @Provides
+  @Singleton
+  fun provideLoginMapper(
+    @Named(DISPATCHER_DEFAULT_TAG) coroutineDispatcher: CoroutineDispatcher,
+  ): LoginMapper {
+    return LoginMapperImplementer(coroutineDispatcher)
+  }
 
-    @Provides
-    @Singleton
-    fun provideLoginRemoteImplementer(
-        networkDataSource: NetworkDataSource<LoginService>,
-        loginMapper: LoginMapper
-    ): LoginRemote {
-        return LoginRemoteImplementer(networkDataSource, loginMapper)
-    }
+  @Provides
+  @Singleton
+  fun provideLoginRemoteImplementer(
+    networkDataSource: NetworkDataSource<LoginService>,
+    loginMapper: LoginMapper,
+  ): LoginRemote {
+    return LoginRemoteImplementer(networkDataSource, loginMapper)
+  }
 }

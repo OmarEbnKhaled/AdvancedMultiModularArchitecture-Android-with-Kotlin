@@ -5,5 +5,5 @@ import com.minafarid.login.data.requests.LoginRequestBody
 import com.minafarid.login.domain.models.UserModel
 
 interface LoginRemote {
-    suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel>
+  suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel>
 }

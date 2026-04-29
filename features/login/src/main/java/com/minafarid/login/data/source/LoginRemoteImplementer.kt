@@ -9,14 +9,14 @@ import com.minafarid.login.domain.mapper.LoginMapper
 import com.minafarid.login.domain.models.UserModel
 
 class LoginRemoteImplementer(
-    private val networkDataSource: NetworkDataSource<LoginService>,
-    private val loginMapper: LoginMapper
+  private val networkDataSource: NetworkDataSource<LoginService>,
+  private val loginMapper: LoginMapper,
 ) : LoginRemote {
-    override suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel> {
-        return networkDataSource.performRequest(
-            request = { login(loginRequestBody).await() },
-            onSuccess = { loginResponse, _ -> OutCome.success(loginMapper.toDomain(loginResponse)) },
-            onError = { errorResponse, code -> OutCome.error(errorResponse.toDomain(code)) }
-        )
-    }
+  override suspend fun login(loginRequestBody: LoginRequestBody): OutCome<UserModel> {
+    return networkDataSource.performRequest(
+      request = { login(loginRequestBody).await() },
+      onSuccess = { loginResponse, _ -> OutCome.success(loginMapper.toDomain(loginResponse)) },
+      onError = { errorResponse, code -> OutCome.error(errorResponse.toDomain(code)) },
+    )
+  }
 }

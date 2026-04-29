@@ -25,57 +25,57 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
-    @Provides
-    @Singleton
-    fun provideGson(): Gson {
-        return Gson()
-    }
+  @Provides
+  @Singleton
+  fun provideGson(): Gson {
+    return Gson()
+  }
 
-    @Provides
-    @Singleton
-    fun provideNetworkMonitor(context: Context): NetworkMonitorInterface {
-        return NetworkMonitorImplementer(context)
-    }
+  @Provides
+  @Singleton
+  fun provideNetworkMonitor(context: Context): NetworkMonitorInterface {
+    return NetworkMonitorImplementer(context)
+  }
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClientProvider(): OkHttpClientProviderInterface {
-        return OkHttpClientProvider()
-    }
+  @Provides
+  @Singleton
+  fun provideOkHttpClientProvider(): OkHttpClientProviderInterface {
+    return OkHttpClientProvider()
+  }
 
-    // Ok http factory
-    @Provides
-    @Singleton
-    fun provideOkHttpCallFactory(
-        @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
-        @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
-        okHttpClientProvider: OkHttpClientProviderInterface
-    ): OkHttpClient {
-        return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFICATE)
-            .addInterceptor(okHttpLoggingInterceptor)
-            .addInterceptor(headerInterceptor)
-            .retryOnConnectionFailure(true)
-            .followRedirects(false)
-            .followSslRedirects(false)
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
-            .writeTimeout(60, TimeUnit.SECONDS)
-            .build()
-    }
+  // Ok http factory
+  @Provides
+  @Singleton
+  fun provideOkHttpCallFactory(
+    @Named(LOGGING_INTERCEPTOR_TAG) okHttpLoggingInterceptor: Interceptor,
+    @Named(HEADER_INTERCEPTOR_TAG) headerInterceptor: Interceptor,
+    okHttpClientProvider: OkHttpClientProviderInterface,
+  ): OkHttpClient {
+    return okHttpClientProvider.getOkHttpClient(BuildConfig.PIN_CERTIFICATE)
+      .addInterceptor(okHttpLoggingInterceptor)
+      .addInterceptor(headerInterceptor)
+      .retryOnConnectionFailure(true)
+      .followRedirects(false)
+      .followSslRedirects(false)
+      .connectTimeout(60, TimeUnit.SECONDS)
+      .readTimeout(60, TimeUnit.SECONDS)
+      .writeTimeout(60, TimeUnit.SECONDS)
+      .build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val builder = Retrofit.Builder()
-            .baseUrl("")
-            .client(okHttpClient)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        return builder.build()
-    }
+  @Provides
+  @Singleton
+  fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    val builder = Retrofit.Builder()
+      .baseUrl("")
+      .client(okHttpClient)
+      .addCallAdapterFactory(CoroutineCallAdapterFactory())
+    return builder.build()
+  }
 
-    @Provides
-    @Singleton
-    fun provideServiceFactory(retrofit: Retrofit): ServiceFactory {
-        return ServiceFactory(retrofit)
-    }
+  @Provides
+  @Singleton
+  fun provideServiceFactory(retrofit: Retrofit): ServiceFactory {
+    return ServiceFactory(retrofit)
+  }
 }
