@@ -11,12 +11,12 @@ object DependenciesVersions {
     const val ACTIVITY_COMPOSE = "1.8.0"
     const val COMPOSE_UI = "1.6.8"
     const val MATERIAL_3 = "1.2.1"
+    const val WORK_RUNTIME = "2.7.1"
 
     const val RETROFIT = "2.11.0"
     const val RETROFIT_COROUTINE_ADAPTER_VERSION = "0.9.2"
     const val OKHTTP = "5.0.0-alpha.2"
     const val HILT = "2.48"
     const val HILT_COMPOSE = "1.2.0"
-    const val HILT_WORK = "2.9.1"
     const val ROOM = "2.6.1"
 }

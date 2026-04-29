@@ -13,6 +13,7 @@ object Dependencies {
         "androidx.compose.ui:ui-tooling-preview:${DependenciesVersions.COMPOSE_UI}"
     const val ANDROIDX_MATERIAL3 =
         "androidx.compose.material3:material3:${DependenciesVersions.MATERIAL_3}"
+    const val WORK_RUNTIME = "androidx.work:work-runtime-ktx:${DependenciesVersions.WORK_RUNTIME}"
 
     const val hiltAndroid = "com.google.dagger:hilt-android:${DependenciesVersions.HILT}"
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${DependenciesVersions.HILT}"
@@ -21,7 +22,6 @@ object Dependencies {
     const val hiltCompilerKapt = "androidx.hilt:hilt-compiler:${DependenciesVersions.HILT_COMPOSE}"
     const val hiltNavigation =
         "androidx.hilt:hilt-navigation-compose:${DependenciesVersions.HILT_COMPOSE}"
-    const val hiltWork = "androidx.work:work-runtime-ktx:${DependenciesVersions.HILT_WORK}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${DependenciesVersions.RETROFIT}"
     const val retrofitConverterGson =

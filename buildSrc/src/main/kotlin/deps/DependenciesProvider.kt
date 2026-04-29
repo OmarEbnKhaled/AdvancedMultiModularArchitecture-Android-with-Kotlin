@@ -30,7 +30,6 @@ fun DependencyHandler.hilt() {
     kapt(Dependencies.hiltCompiler)
     kapt(Dependencies.hiltAgp)
     kapt(Dependencies.hiltCompilerKapt)
-    implementation(Dependencies.hiltWork)
 }
 
 fun DependencyHandler.androidx() {
@@ -41,6 +40,7 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.ANDROIDX_UI_GRAPHICS)
     implementation(Dependencies.ANDROIDX_UI_TOOLING_PREVIEW)
     implementation(Dependencies.ANDROIDX_MATERIAL3)
+    implementation(Dependencies.WORK_RUNTIME)
 }
 
 fun DependencyHandler.testImplementationDependencies() {
