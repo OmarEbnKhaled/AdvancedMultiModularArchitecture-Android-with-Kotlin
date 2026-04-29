@@ -1,6 +1,4 @@
-package com.minafarid.login.domain
-
-import com.google.gson.annotations.SerializedName
+package com.minafarid.login.domain.models
 
 data class UserModel (
     val id: String,
