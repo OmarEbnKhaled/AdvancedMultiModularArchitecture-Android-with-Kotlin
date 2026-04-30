@@ -1,4 +1,4 @@
-package com.minafarid.protodatastore
+package com.minafarid.protodatastore.serializer
 
 import androidx.datastore.core.Serializer
 import com.google.protobuf.InvalidProtocolBufferException
