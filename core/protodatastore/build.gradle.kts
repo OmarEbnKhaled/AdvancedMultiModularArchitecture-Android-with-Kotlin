@@ -1,6 +1,7 @@
 import deps.Dependencies.protoBuffArtifact
 import deps.androidTestImplementationDependencies
 import deps.debugImplementationDependencies
+import deps.hilt
 import deps.protoDataStore
 import deps.testImplementationDependencies
 import plugs.SharedLibraryGradlePlugin
@@ -38,6 +39,7 @@ android {
 
 dependencies {
   protoDataStore()
+  hilt()
 
   testImplementationDependencies()
   androidTestImplementationDependencies()
