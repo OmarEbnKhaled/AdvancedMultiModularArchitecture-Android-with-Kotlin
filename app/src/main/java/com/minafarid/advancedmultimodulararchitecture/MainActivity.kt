@@ -9,13 +9,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -27,12 +32,23 @@ import com.minafarid.datastore.settings.AppSettings
 import com.minafarid.datastore.settings.AppSettingsSerializer
 import com.minafarid.datastore.settings.Language
 import com.minafarid.datastore.settings.Location
+import com.minafarid.protodatastore.manager.preferences.PreferencesDataStoreInterface
+import com.minafarid.protodatastore.manager.session.SessionDataStoreInterface
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+  @Inject
+  lateinit var preferencesDataStoreInterface: PreferencesDataStoreInterface
+
+  @Inject
+  lateinit var sessionDataStoreInterface: SessionDataStoreInterface
 
   lateinit var appSettingDataStore: DataStore<AppSettings>
 
@@ -56,7 +72,11 @@ class MainActivity : ComponentActivity() {
 //                        modifier = Modifier.padding(innerPadding),
 //                    )
 
-          SettingScreen(appSettingDataStore, modifier = Modifier.padding(innerPadding))
+          SettingScreen(
+            sessionDataStoreInterface,
+            appSettingDataStore,
+            modifier = Modifier.padding(innerPadding),
+          )
         }
       }
     }
@@ -71,23 +91,45 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SettingScreen(appSettingDataStore: DataStore<AppSettings>, modifier: Modifier) {
+fun SettingScreen(
+  sessionDataStoreInterface: SessionDataStoreInterface,
+  appSettingDataStore: DataStore<AppSettings>,
+  modifier: Modifier,
+) {
   val scope = rememberCoroutineScope()
   val appSetting by appSettingDataStore.data.collectAsState(initial = AppSettings())
 
+  val accessTokenFlow by sessionDataStoreInterface.getAccessTokenFlow().collectAsState("")
+  var accessTokenValue by remember { mutableStateOf("") }
+
   Column(modifier = Modifier.padding(50.dp)) {
+    // Display Data from Proto Data Store
+    Spacer(modifier = Modifier.height(16.dp))
+    Text(text = "Access Token Flow: \n$accessTokenFlow, \nFrom (Proto Data Store).")
+    Spacer(modifier = Modifier.height(16.dp))
+
+    LaunchedEffect(Unit) {
+      scope.launch {
+        accessTokenValue = sessionDataStoreInterface.getAccessToken()
+      }
+    }
+    Text(text = "Access Token Value: \n$accessTokenValue, \nFrom (Proto Data Store).")
+    Spacer(modifier = Modifier.height(16.dp))
+
+    Button(onClick = {
+      scope.launch {
+        sessionDataStoreInterface.setAccessToken("Bearer " + System.currentTimeMillis())
+      }
+    }) {
+      Text(text = "Insert")
+    }
+
     // Display saved language
-    Text(
-      text = "Language ${appSetting.language}, \nFrom (Data Store).",
-      modifier = modifier,
-    )
+    Text(text = "Language ${appSetting.language}, \nFrom (Data Store).")
     Spacer(modifier = Modifier.height(16.dp))
 
     // Display saved Location
-    Text(
-      text = "Last Known Location: \nFrom (Data Store).",
-      modifier = modifier,
-    )
+    Text(text = "Last Known Location: \nFrom (Data Store).")
     appSetting.lastKnownLocations.forEach { location ->
       Spacer(modifier = Modifier.height(16.dp))
       Text(text = "Lat: ${location.lat}, Long: ${location.long}")
