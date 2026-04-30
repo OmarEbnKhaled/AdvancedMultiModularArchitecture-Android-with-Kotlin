@@ -30,6 +30,8 @@ class SharedLibraryGradlePlugin : Plugin<Project> {
         plugins.apply(BuildPlugins.DETEKT)
         plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES_VERSIONS)
         plugins.apply(BuildPlugins.DOKKA)
+
+        plugins.apply(BuildPlugins.KOTLIN_SERIALIZATION)
     }
 
     private fun Project.addAndroidConfigurations() {
