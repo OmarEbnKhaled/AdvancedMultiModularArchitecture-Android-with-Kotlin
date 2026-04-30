@@ -1,4 +1,5 @@
 import deps.androidTestImplementationDependencies
+import deps.dataStore
 import deps.debugImplementationDependencies
 import deps.hilt
 import deps.okHttp
@@ -20,6 +21,7 @@ dependencies {
   okHttp()
   retrofit()
   hilt()
+  dataStore()
 
   testImplementationDependencies()
   androidTestImplementationDependencies()

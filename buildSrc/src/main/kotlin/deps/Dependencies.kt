@@ -39,5 +39,5 @@ object Dependencies {
 
     const val datastore = "androidx.datastore:datastore:${DependenciesVersions.DATASTORE}"
     const val kotlinCollection = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${DependenciesVersions.KOTLIN_COLLECTIONS}"
-    const val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization:${DependenciesVersions.KOTLIN_SERIALIZATION}"
+    const val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:${DependenciesVersions.KOTLIN_SERIALIZATION}"
 }

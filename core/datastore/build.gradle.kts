@@ -1,4 +1,5 @@
 import deps.androidTestImplementationDependencies
+import deps.dataStore
 import deps.debugImplementationDependencies
 import deps.testImplementationDependencies
 import plugs.SharedLibraryGradlePlugin
@@ -14,6 +15,8 @@ android {
 }
 
 dependencies {
+  dataStore()
+
   testImplementationDependencies()
   androidTestImplementationDependencies()
   debugImplementationDependencies()
