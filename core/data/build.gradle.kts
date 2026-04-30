@@ -3,6 +3,8 @@ import deps.dataStore
 import deps.debugImplementationDependencies
 import deps.hilt
 import deps.okHttp
+import deps.protoDataStore
+import deps.protoDatastoreModule
 import deps.retrofit
 import deps.testImplementationDependencies
 import plugs.SharedLibraryGradlePlugin
@@ -18,6 +20,8 @@ android {
 }
 
 dependencies {
+  protoDatastoreModule()
+
   okHttp()
   retrofit()
   hilt()
