@@ -40,4 +40,8 @@ object Dependencies {
     const val datastore = "androidx.datastore:datastore:${DependenciesVersions.DATASTORE}"
     const val kotlinCollection = "org.jetbrains.kotlinx:kotlinx-collections-immutable:${DependenciesVersions.KOTLIN_COLLECTIONS}"
     const val kotlinSerialization = "org.jetbrains.kotlinx:kotlinx-serialization-json:${DependenciesVersions.KOTLIN_SERIALIZATION}"
+
+    const val protoBuffJavaLite = "com.google.protobuf:protobuf-javalite:${DependenciesVersions.PROTO_BUFF_JAVA}"
+    const val protoBuffKotlinLite = "com.google.protobuf:protobuf-kotlin-lite:${DependenciesVersions.PROTO_BUFF_KOTLIN}"
+
 }

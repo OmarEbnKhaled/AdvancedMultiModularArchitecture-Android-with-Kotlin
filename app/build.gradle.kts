@@ -13,6 +13,7 @@ import deps.homeModule
 import deps.loginModule
 import deps.okHttp
 import deps.presentationModule
+import deps.protoDatastoreModule
 import deps.retrofit
 import deps.room
 import deps.testImplementationDependencies
@@ -111,6 +112,7 @@ dependencies {
   domainModule()
   presentationModule()
   datastoreModule()
+  protoDatastoreModule()
 
   loginModule()
   homeModule()
