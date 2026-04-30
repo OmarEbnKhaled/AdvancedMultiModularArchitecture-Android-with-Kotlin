@@ -4,6 +4,7 @@ import build.BuildDimensions
 import deps.androidTestImplementationDependencies
 import deps.androidx
 import deps.dataModule
+import deps.dataStore
 import deps.datastoreModule
 import deps.debugImplementationDependencies
 import deps.domainModule
@@ -119,6 +120,7 @@ dependencies {
   room()
   okHttp()
   retrofit()
+  dataStore()
 
   testImplementationDependencies()
   androidTestImplementationDependencies()
