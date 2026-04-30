@@ -43,5 +43,5 @@ object Dependencies {
 
     const val protoBuffJavaLite = "com.google.protobuf:protobuf-javalite:${DependenciesVersions.PROTO_BUFF_JAVA}"
     const val protoBuffKotlinLite = "com.google.protobuf:protobuf-kotlin-lite:${DependenciesVersions.PROTO_BUFF_KOTLIN}"
-
+    const val protoBuffArtifact = "com.google.protobuf:protoc:${DependenciesVersions.PROTO_BUFF_KOTLIN}"
 }

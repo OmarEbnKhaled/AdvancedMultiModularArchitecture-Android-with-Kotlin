@@ -2,6 +2,7 @@ package com.minafarid.datastore.settings
 
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
@@ -15,7 +16,7 @@ import kotlinx.serialization.encoding.Encoder
 class PersistentListLocationSerializer : KSerializer<PersistentList<Location>> {
   private val delegateSerializer = ListSerializer(Location.serializer())
 
-  @OptIn(InternalSerializationApi::class)
+  @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
   override val descriptor: SerialDescriptor = buildSerialDescriptor(
     "PersistentList",
     SerialKind.CONTEXTUAL, // indicates that this is a contextual (custom) serializer
