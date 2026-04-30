@@ -12,12 +12,29 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.datastore.core.DataStore
+import androidx.datastore.core.DataStoreFactory
+import androidx.datastore.dataStoreFile
 import com.minafarid.advancedmultimodulararchitecture.ui.theme.AdvancedMultiModularArchitectureTheme
+import com.minafarid.datastore.settings.AppSettings
+import com.minafarid.datastore.settings.AppSettingsSerializer
 import com.minafarid.provider.DataProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 
 class MainActivity : ComponentActivity() {
+
+  lateinit var appSettingDataStore: DataStore<AppSettings>
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
+    appSettingDataStore = DataStoreFactory.create(
+      serializer = AppSettingsSerializer(),
+      produceFile = { dataStoreFile("app_setting.json") },
+      scope = CoroutineScope(Dispatchers.IO + SupervisorJob())
+    )
 
     // val room = Room.databaseBuilder()
 
