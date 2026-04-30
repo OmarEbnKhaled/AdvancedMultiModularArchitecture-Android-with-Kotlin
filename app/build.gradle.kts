@@ -4,6 +4,7 @@ import build.BuildDimensions
 import deps.androidTestImplementationDependencies
 import deps.androidx
 import deps.dataModule
+import deps.datastoreModule
 import deps.debugImplementationDependencies
 import deps.domainModule
 import deps.hilt
@@ -108,6 +109,7 @@ dependencies {
   dataModule()
   domainModule()
   presentationModule()
+  datastoreModule()
 
   loginModule()
   homeModule()

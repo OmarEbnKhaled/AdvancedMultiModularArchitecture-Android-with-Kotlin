@@ -75,6 +75,10 @@ fun DependencyHandler.presentationModule() {
     moduleImplementation(project(":core:presentation"))
 }
 
+fun DependencyHandler.datastoreModule() {
+    moduleImplementation(project(":core:datastore"))
+}
+
 
 fun DependencyHandler.loginModule() {
     moduleImplementation(project(":features:login"))
