@@ -1,4 +1,4 @@
-package com.minafarid.protodatastore.manager
+package com.minafarid.protodatastore.manager.preferences
 
 import kotlinx.coroutines.flow.Flow
 
@@ -22,6 +22,4 @@ interface PreferencesDataStoreInterface {
 
     suspend fun getMoneyBalance(): Long
     fun getMoneyBalanceFlow(): Flow<Long>
-
-
 }
