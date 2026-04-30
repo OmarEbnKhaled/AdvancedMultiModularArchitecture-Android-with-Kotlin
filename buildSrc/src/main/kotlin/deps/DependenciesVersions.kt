@@ -22,5 +22,5 @@ object DependenciesVersions {
 
     const val DATASTORE = "1.1.1"
     const val KOTLIN_COLLECTIONS = "0.3.7"
-    const val KOTLIN_SERIALIZATION = "2.0.0"
+    const val KOTLIN_SERIALIZATION = "1.6.2"
 }
