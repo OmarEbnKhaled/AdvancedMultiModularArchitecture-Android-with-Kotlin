@@ -4,13 +4,17 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
 import test.TestDependencies
 
-
 fun DependencyHandler.room(){
     implementation(Dependencies.roomKtx)
     implementation(Dependencies.roomRuntime)
     kapt(Dependencies.roomCompiler)
 }
 
+fun DependencyHandler.dataStore(){
+    implementation(Dependencies.datastore)
+    implementation(Dependencies.kotlinCollection)
+    implementation(Dependencies.kotlinSerialization)
+}
 
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)

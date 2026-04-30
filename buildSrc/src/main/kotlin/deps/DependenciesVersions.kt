@@ -19,4 +19,8 @@ object DependenciesVersions {
     const val HILT = "2.48"
     const val HILT_COMPOSE = "1.2.0"
     const val ROOM = "2.6.1"
+
+    const val DATASTORE = "1.1.1"
+    const val KOTLIN_COLLECTIONS = "0.3.7"
+    const val KOTLIN_SERIALIZATION = "2.0.0"
 }
